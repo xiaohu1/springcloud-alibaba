@@ -1,0 +1,30 @@
+server:
+  port: 8443
+spring:
+  application:
+    name: sentinel-getway-demo
+  cloud:
+    nacos:
+      server-addr: 47.105.155.211:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      scg:
+        fallback:
+          mode: response
+          response-status: 426
+          response-body: error request
+    gateway:
+      enabled: true
+      discovery:
+        locator:
+          lower-case-service-id: true
+      routes:
+        - id: sentinel-gateway-service
+          uri: lb://sentinel-gateway-service
+          predicates:
+            - Path=/gateway/**
+          # 路由服务转发前缀验证
+          filters:
+            - StripPrefix=1
+

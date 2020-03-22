@@ -1,0 +1,8 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: sentinel-feign-consumer-demo
+  cloud:
+    nacos:
+      server-addr: 47.105.155.211:8848

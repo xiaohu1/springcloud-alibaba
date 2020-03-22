@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="seata-business-demo" />
+        <module name="sentinel-gateway-service" />
+        <module name="sentinel-feign-demo" />
+        <module name="seata-account-demo" />
+        <module name="nacos-config" />
+        <module name="seata-storage-demo" />
+        <module name="nacos-discovery" />
+        <module name="sentinel-demo" />
+        <module name="sentinel-gateway-demo" />
+        <module name="rocketmq-producer" />
+        <module name="seata-order-demo" />
+        <module name="sentinel-feign-consumer-demo" />
+        <module name="rocketmq-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="nacos-config" target="1.5" />
+      <module name="nacos-discovery" target="1.5" />
+      <module name="rocketmq-consumer" target="1.5" />
+      <module name="rocketmq-producer" target="1.5" />
+      <module name="seata-account-demo" target="1.5" />
+      <module name="seata-business-demo" target="1.5" />
+      <module name="seata-order-demo" target="1.5" />
+      <module name="seata-storage-demo" target="1.5" />
+      <module name="sentinel-demo" target="1.5" />
+      <module name="sentinel-feign-consumer-demo" target="1.5" />
+      <module name="sentinel-feign-demo" target="1.5" />
+      <module name="sentinel-gateway-demo" target="1.5" />
+      <module name="sentinel-gateway-service" target="1.5" />
+      <module name="springcloud-alibaba" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,17 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: sentinel-demo
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 47.105.155.211:8848
+            dataId: sentinel-demo
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
