@@ -18,10 +18,7 @@
         <module>sentinel-gateway-service</module>
         <module>rocketmq-producer</module>
         <module>rocketmq-consumer</module>
-        <module>seata-account-demo</module>
-        <module>seata-order-demo</module>
-        <module>seata-storage-demo</module>
-        <module>seata-business-demo</module>
+        <module>seata-demo</module>
     </modules>
 
     <properties>
@@ -30,6 +27,9 @@
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <mybatis-plus.version>3.3.1</mybatis-plus.version>
         <alibaba-druid.version>1.1.16</alibaba-druid.version>
+        <mysql.version>8.0.19</mysql.version>
+        <seata.version>1.1.0</seata.version>
+        <spring-cloud-alibaba-seata.version>2.0.0.RELEASE</spring-cloud-alibaba-seata.version>
     </properties>
     <dependencies>
         <!--监控-->
@@ -83,6 +83,20 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

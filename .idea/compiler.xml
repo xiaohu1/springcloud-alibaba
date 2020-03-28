@@ -2,40 +2,58 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="seata-business-demo" />
+        <module name="user-rest-api" />
+        <module name="order-service-model" />
+        <module name="storage-service-model" />
         <module name="sentinel-gateway-service" />
         <module name="sentinel-feign-demo" />
-        <module name="seata-account-demo" />
         <module name="nacos-config" />
-        <module name="seata-storage-demo" />
+        <module name="storage-rest-api" />
+        <module name="user-sevice-model" />
         <module name="nacos-discovery" />
-        <module name="sentinel-demo" />
-        <module name="sentinel-gateway-demo" />
-        <module name="rocketmq-producer" />
-        <module name="seata-order-demo" />
-        <module name="sentinel-feign-consumer-demo" />
+        <module name="seata-commons" />
+        <module name="order-rest-api" />
         <module name="rocketmq-consumer" />
+        <module name="sentinel-gateway-demo" />
+        <module name="sentinel-feign-consumer-demo" />
+        <module name="rocketmq-producer" />
+        <module name="sentinel-demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="nacos-config" target="1.5" />
-      <module name="nacos-discovery" target="1.5" />
-      <module name="rocketmq-consumer" target="1.5" />
-      <module name="rocketmq-producer" target="1.5" />
+      <module name="nacos-config" target="1.8" />
+      <module name="nacos-discovery" target="1.8" />
+      <module name="order-rest-api" target="1.5" />
+      <module name="order-service-model" target="1.8" />
+      <module name="rocketmq-consumer" target="1.8" />
+      <module name="rocketmq-producer" target="1.8" />
       <module name="seata-account-demo" target="1.5" />
       <module name="seata-business-demo" target="1.5" />
+      <module name="seata-commons" target="1.5" />
+      <module name="seata-demo" target="1.5" />
       <module name="seata-order-demo" target="1.5" />
       <module name="seata-storage-demo" target="1.5" />
-      <module name="sentinel-demo" target="1.5" />
-      <module name="sentinel-feign-consumer-demo" target="1.5" />
-      <module name="sentinel-feign-demo" target="1.5" />
-      <module name="sentinel-gateway-demo" target="1.5" />
-      <module name="sentinel-gateway-service" target="1.5" />
-      <module name="springcloud-alibaba" target="1.5" />
+      <module name="seata-user-demo" target="1.5" />
+      <module name="sentinel-demo" target="1.8" />
+      <module name="sentinel-feign-consumer-demo" target="1.8" />
+      <module name="sentinel-feign-demo" target="1.8" />
+      <module name="sentinel-gateway-demo" target="1.8" />
+      <module name="sentinel-gateway-service" target="1.8" />
+      <module name="springcloud-alibaba" target="1.8" />
+      <module name="storage-rest-api" target="1.5" />
+      <module name="storage-service-model" target="1.8" />
+      <module name="user-rest-api" target="1.5" />
+      <module name="user-sevice-model" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="seata-order-demo" options="" />
+    </option>
   </component>
 </project>

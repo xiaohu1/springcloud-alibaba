@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: default_group
+    nacos:
+      discovery:
+        server-addr: 47.105.155.211:8848
+  aop:
+    proxy-target-class: true
+  application:
+    name: seata-user-demo
+  datasource:
+    username: admin
+    password: 123456Liu@
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.105.155.211:3306/db_user?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    hikari:
+      connection-timeout: 30000
+      auto-commit: true
+      max-lifetime: 1800000
+      pool-name: DatebookHikariCP
+      minimum-idle: 5
+      connection-test-query: SELECT 1
+      maximum-pool-size: 15
+      idle-timeout: 30000
+msg: seata-user-demo
+server:
+  port: 8092
+mybatis-plus:
+  configuration:
+    cache-enabled: true
+    multipleResultSetsEnabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+    lazyLoadingEnabled: false
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.test.seata.user.entity
