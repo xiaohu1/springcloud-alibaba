@@ -39,7 +39,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
 
     //假设商品默认价格为：100元
     int unitPrice = 100;
-    int money = count * 100;
+    int money = count * unitPrice;
     //扣除用户的余额
     DefaultResult defaultResult = userServiceClient.deduction(userId,money);
     //如果状态不为200直接返回
@@ -62,7 +62,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
     }
     //模拟异常
     if (userId.equals("1002")&&count==10){
-          int a=1/0;
+      int a=1/0;
     }
   }
 }

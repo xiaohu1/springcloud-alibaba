@@ -1,5 +1,5 @@
 server:
-  port: 8091
+  port: 8096
 spring:
   # 服务名称
   application:
@@ -15,7 +15,7 @@ spring:
         # 设置配置文件yml 格式
         file-extension: yml
         namespace: public
-        group: DEFAULT_GROUP
+        group: SEATA_CONFIG_GROUP
   # 项目开发模式
   profiles:
     active: dev

@@ -1,6 +1,13 @@
 package com.test.seata.commons;
 
+import lombok.Data;
+
+@Data
 public class DefaultResult {
+
+  public DefaultResult(){
+
+  }
 
 
   private int status = 200;//状态： DefaultResultCodeEnum.success.getCode() 正常，500服务错误，DefaultResultCodeEnum.failure.getCode()错误有误；
