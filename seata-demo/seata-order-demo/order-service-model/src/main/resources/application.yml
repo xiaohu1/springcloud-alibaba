@@ -9,13 +9,13 @@ spring:
   aop:
     proxy-target-class: true
   application:
-    name: seata-storage-demo
+    name: seata-order-demo
   datasource:
     username: admin
     password: 123456Liu@
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.105.155.211:3306/db_storage?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://47.105.155.211:3306/db_order?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     hikari:
       connection-timeout: 30000
       auto-commit: true
@@ -25,7 +25,7 @@ spring:
       connection-test-query: SELECT 1
       maximum-pool-size: 15
       idle-timeout: 30000
-msg: seata-storage-demo
+msg: seata-order-demo
 server:
   port: 8096
 mybatis-plus:
@@ -36,4 +36,4 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     lazyLoadingEnabled: false
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.test.seata.storage.entity
+  type-aliases-package: com.test.seata.order.entity

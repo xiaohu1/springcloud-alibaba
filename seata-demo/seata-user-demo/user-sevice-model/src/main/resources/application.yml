@@ -14,7 +14,7 @@ spring:
     username: admin
     password: 123456Liu@
     type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://47.105.155.211:3306/db_user?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
     hikari:
       connection-timeout: 30000

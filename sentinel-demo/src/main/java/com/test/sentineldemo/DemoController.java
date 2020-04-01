@@ -15,6 +15,6 @@ public class DemoController {
     @GetMapping("/resource")
     @SentinelResource(value = "hello")
     public String resource(){
-        return "sentinel resource";
+        return "sentinel resources";
     }
 }
