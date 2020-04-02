@@ -37,3 +37,15 @@ mybatis-plus:
     lazyLoadingEnabled: false
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.test.seata.user.entity
+#seata:
+#  registry:
+#    type: nacos
+#    nacos:
+#      server-addr: 47.105.155.211:8848
+#      cluster: defult
+#      namespace: public
+#  config:
+#    type: nacos
+#    nacos:
+#      server-addr: 47.105.155.211:8848
+#      namespace: public

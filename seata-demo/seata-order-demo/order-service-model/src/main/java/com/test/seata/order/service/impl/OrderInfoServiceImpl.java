@@ -25,9 +25,9 @@ import javax.annotation.Resource;
 public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo> implements
         IOrderInfoService {
 
-  @Resource
+  @Autowired
   private StorageServiceClient storageServiceClient;
-  @Resource
+  @Autowired
   private UserServiceClient userServiceClient;
 
   /**
