@@ -50,9 +50,10 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
         </dependency>
+
         <dependency>
             <groupId>io.seata</groupId>
-            <artifactId>seata-spring-boot-starter</artifactId>
+            <artifactId>seata-all</artifactId>
             <version>${seata.version}</version>
         </dependency>
 
