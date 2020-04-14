@@ -1,0 +1,33 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: rocketmq-consume-demo
+  cloud:
+    stream:
+      binders:
+        outputOne: {destination: test-topic,content-type: application/json}
+        outputTwo: {destination: TransactionTopic,content-type: application/json}
+        outputThr: {destination: pull-topic,content-type: text/plain}
+      rocketmq:
+        binder:
+          name-server: 47.105.155.211:9876
+        bindings:
+          outputOne:
+            producer: {group: binder-group,sync: true }
+          outputTwo:
+            producer: {group: myTxProducerGroup,transactional: true }
+          outputThr:
+            producer: {group: pull-binder-group}
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+

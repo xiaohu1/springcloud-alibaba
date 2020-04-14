@@ -11,7 +11,7 @@ spring:
   application:
     name: seata-user-demo
   datasource:
-    username: admin
+    username: root
     password: 123456Liu@
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver

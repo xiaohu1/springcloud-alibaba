@@ -19,6 +19,7 @@
         <module>rocketmq-producer</module>
         <module>rocketmq-consumer</module>
         <module>seata-demo</module>
+        <module>rocketmq-demo</module>
     </modules>
 
     <properties>

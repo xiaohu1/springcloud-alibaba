@@ -1,0 +1,58 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: rocketmq-consume-demo
+  cloud:
+    stream:
+      bindings:
+        inputOne:
+          content-type: text/plain
+          destination: test-topic
+          group: test-group1
+        inputTwo:
+          consumer:
+            concurrency: 20
+            maxAttempts: 1
+          content-type: text/plain
+          destination: test-topic
+          group: test-group2
+        inputThr:
+          consumer:
+            concurrency: 20
+          content-type: application/json
+          destination: test-topic
+          group: test-group3
+        inputFour:
+          consumer:
+            concurrency: 5
+          content-type: text/plain
+          destination: TransactionTopic
+          group: transaction-group
+        inputFive:
+          content-type: text/plain
+          destination: pull-topic
+          group: pull-topic-group
+      rocketmq:
+        binder:
+          name-server: 47.105.155.211:9876
+        bindings:
+          input1:
+            consumer:
+              orderly: true
+            input2:
+              consumer:
+                orderly: false
+                tags: tagStr
+            input3:
+              consumer:
+                tags: tagObj
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
