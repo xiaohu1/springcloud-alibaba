@@ -37,16 +37,16 @@ spring:
         binder:
           name-server: 47.105.155.211:9876
         bindings:
-          input1:
+          inputOne:
             consumer:
               orderly: true
-            input2:
-              consumer:
-                orderly: false
-                tags: tagStr
-            input3:
-              consumer:
-                tags: tagObj
+          inputTwo:
+            consumer:
+              orderly: false
+              tags: tagStr
+          inputThr:
+            consumer:
+              tags: tagObj
 
 management:
   endpoint:

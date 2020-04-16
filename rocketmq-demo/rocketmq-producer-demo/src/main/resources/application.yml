@@ -3,23 +3,51 @@ server:
 
 spring:
   application:
-    name: rocketmq-consume-demo
+    name: rocketmq-producer-demo
+#  cloud:
+#    stream:
+#      binders:
+#        outputOne: {destination: test-topic,content-type: application/json}
+#        outputTwo: {destination: TransactionTopic,content-type: application/json}
+#        outputThr: {destination: pull-topic,content-type: text/plain}
+#      rocketmq:
+#        binder:
+#          name-server: 47.105.155.211:9876
+#        bindings:
+#          outputOne:
+#            producer: {group: binder-group,sync: true }
+#          outputTwo:
+#            producer: {group: myTxProducerGroup,transactional: true }
+#          outputThr:
+#            producer: {group: pull-binder-group}
+
   cloud:
     stream:
-      binders:
-        outputOne: {destination: test-topic,content-type: application/json}
-        outputTwo: {destination: TransactionTopic,content-type: application/json}
-        outputThr: {destination: pull-topic,content-type: text/plain}
+      bindings:
+        outputOne:
+          content-type: application/json
+          destination: test-topic
+        outputTwo:
+          content-type: application/json
+          destination: TransactionTopic
+        outputThr:
+          content-type: text/plain
+          destination: pull-topic
       rocketmq:
         binder:
           name-server: 47.105.155.211:9876
         bindings:
           outputOne:
-            producer: {group: binder-group,sync: true }
+            producer:
+              group: binder-group
+              sync: true
           outputTwo:
-            producer: {group: myTxProducerGroup,transactional: true }
+            producer:
+              group: myTxProducerGroup
+              transactional: true
           outputThr:
-            producer: {group: pull-binder-group}
+            producer:
+              group: pull-binder-group
 management:
   endpoint:
     health:
