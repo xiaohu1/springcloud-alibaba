@@ -8,7 +8,7 @@ spring:
     nacos:
       # 服务注册与发现
       discovery:
-        server-addr: 47.105.155.211:8848
+        server-addr: 47.105.155.211:80
       # 配置中心
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}

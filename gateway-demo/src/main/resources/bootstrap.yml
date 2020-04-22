@@ -1,9 +1,9 @@
 server:
-  port: 8002
+  port: 8443
 spring:
   # 服务名称
   application:
-    name: nacos-config
+    name: gateway-server
   cloud:
     nacos:
       # 服务注册与发现
@@ -16,8 +16,7 @@ spring:
         file-extension: yml
         # 公共配置文件共享
         shared-configs:
-          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+        - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
   # 项目开发模式
   profiles:
     active: dev
-
