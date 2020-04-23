@@ -16,6 +16,7 @@ import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
@@ -35,7 +36,7 @@ import java.util.Map;
 public class AccessGatewayFilter implements GlobalFilter {
 
     private static final String BEARER = "Bearer";
-    private static final String BASIC = "basic";
+    private static final String BASIC = "Basic";
     private final AuthService authService;
     private final IgnoreUrlConfig ignoreUrlConfig;
 
@@ -69,11 +70,11 @@ public class AccessGatewayFilter implements GlobalFilter {
             return unauthorized(exchange);
         }
         // 获取access_token 放掉
-        if (authentication.startsWith(BASIC.toLowerCase())) {
+        if (authentication.startsWith(BASIC)) {
             URI uri = exchange.getRequest().getURI();
             String queryParam = uri.getRawQuery();
             Map<String, String> paramMap = HttpUtil.decodeParamMap(queryParam, CharsetUtil.UTF_8);
-            paramMap.put("grant_type", "password");//密码账号获取access_token
+//            paramMap.put("grant_type", "password");//密码账号获取access_token
             URI newUri = UriComponentsBuilder.fromUri(uri)
                     .replaceQuery(HttpUtil.toParams(paramMap))
                     .build(true)
@@ -87,7 +88,7 @@ public class AccessGatewayFilter implements GlobalFilter {
 ////            builder.header(HttpHeaders.AUTHORIZATION, OauthUtils.authHeaders());
 //            return chain.filter(exchange.mutate().request(builder.build()).build());
         }
-        if (authentication.startsWith(BEARER.toLowerCase())) {
+        if (authentication.startsWith(BEARER)) {
             //1.验证token是否有效
             //2.验证url是否有请求权限
             int flag = authService.checkTokenInOauth2Client(authentication.substring(7), url);

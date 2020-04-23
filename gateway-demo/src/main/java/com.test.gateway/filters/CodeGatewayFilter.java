@@ -1,4 +1,4 @@
-package com.example.gateway.filters;
+package com.test.gateway.filters;
 
 import cn.hutool.core.util.StrUtil;
 import com.test.common.base.constant.Constant;

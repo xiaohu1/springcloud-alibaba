@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,11 +55,11 @@ public class SysUserEntity extends Model<SysUserEntity> {
     /**
      * 部门ID
      */
-    private Long deptId;
+//    private Long deptId;
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private Date createTime;
     /**
      * 创建人
      */
@@ -67,7 +67,7 @@ public class SysUserEntity extends Model<SysUserEntity> {
     /**
      * 更新时间
      */
-    private LocalDateTime updateTime;
+    private Date updateTime;
     /**
      * 更新人
      */

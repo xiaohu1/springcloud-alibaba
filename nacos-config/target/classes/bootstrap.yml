@@ -16,7 +16,7 @@ spring:
         file-extension: yml
         # 公共配置文件共享
         shared-configs:
-          - aplication-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
   # 项目开发模式
   profiles:
     active: dev

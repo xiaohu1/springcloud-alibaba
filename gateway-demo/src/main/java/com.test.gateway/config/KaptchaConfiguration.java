@@ -1,4 +1,4 @@
-package com.example.gateway.config;
+package com.test.gateway.config;
 
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;

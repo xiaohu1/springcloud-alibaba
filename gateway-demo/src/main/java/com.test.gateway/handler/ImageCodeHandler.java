@@ -1,4 +1,4 @@
-package com.example.gateway.handler;
+package com.test.gateway.handler;
 
 import com.google.code.kaptcha.Producer;
 import com.test.common.base.constant.Constant;

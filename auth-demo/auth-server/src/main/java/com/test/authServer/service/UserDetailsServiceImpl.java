@@ -71,7 +71,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		SysUserEntity user = info.getSysUser();
 
 		// 构造security用户
-		return new UserDetail(user.getUserId(), user.getDeptId(), user.getUsername(), user.getPassword(),
+		return new UserDetail(user.getUserId(), null, user.getUsername(), user.getPassword(),
 			true, true, true, true, authorities);
 	}
 }
