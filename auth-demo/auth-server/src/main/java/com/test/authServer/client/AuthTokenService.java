@@ -32,13 +32,13 @@ public class AuthTokenService {
     private final UserService remoteUserService;
 
     /**
-     * 客户端申请access_token校验 , 验证url 权限
+     * 客户端申请access_token校验 , 验证url 权限(可以改成jwt 验证(这个类只是默认uuid生成密码，原生验证access_token 测试))
      *
      * @param tokenValue
      * @return
      */
     @GetMapping("/checkToken")
-    public int checkTokenInOauth2Client(@RequestParam("token") String tokenValue, @RequestParam("perms") String perms) {
+    public int checkTokenInOauth2Client(@RequestParam(value = "access_token") String tokenValue, @RequestParam(value = "perms",required = false) String perms) {
         int flag = 0;
         try {
             RestTemplate restTemplate = new RestTemplate();

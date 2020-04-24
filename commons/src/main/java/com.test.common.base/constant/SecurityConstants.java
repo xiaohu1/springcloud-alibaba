@@ -26,7 +26,7 @@ public interface SecurityConstants {
 	/**
 	 * 检查access_token
 	 */
-	String OAUTH_CHECK_TOKEN ="http://localhost:8082/oauth/check_token";
+	String OAUTH_CHECK_TOKEN ="http://localhost:6001/oauth/check_token";
 
 
 //	/**

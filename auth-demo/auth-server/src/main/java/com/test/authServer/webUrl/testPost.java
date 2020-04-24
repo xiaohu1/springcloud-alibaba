@@ -20,10 +20,16 @@ public class testPost {
     @Value("${ignore.urls}")
     private String pramsUrl;
 
+    @Value("${spring.security.oauth2.jwt.signingKey}")
+    private String signingKey;
+
     @GetMapping("/postMethod")
     public String postMethod(){
         System.out.println("111111111111111111"+pramsUrl);
+        System.out.println("2222222222           :"+      signingKey);
         System.out.println("q123132123");
         return pramsUrl;
     }
+
+
 }

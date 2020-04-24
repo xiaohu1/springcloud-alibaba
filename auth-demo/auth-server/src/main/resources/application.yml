@@ -6,10 +6,10 @@
 #    url: jdbc:mysql://47.105.155.211:3306/system?useUnicode=true&characterEncoding=utf-8&useSSL=false
 #    username: root
 #    password: 123456
-##    security:
-##       oauth2:
-##          jwt:
-##             signingKey: 123456 # 对称加密秘钥
+#  security:
+#     oauth2:
+#        jwt:
+#           signingKey: 123456 # 对称加密秘钥
 #
 ## Logging配置
 #logging:

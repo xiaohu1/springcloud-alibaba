@@ -28,9 +28,6 @@
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
-        <!--<spring-boot.version>2.2.5.RELEASE</spring-boot.version>-->
-        <!--<spring-cloud.version>Hoxton.SR2</spring-cloud.version>-->
-        <!--<spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>-->
         <mybatis-plus.version>3.3.1</mybatis-plus.version>
         <alibaba-druid.version>1.1.16</alibaba-druid.version>
         <mysql.version>8.0.19</mysql.version>
@@ -40,8 +37,15 @@
         <kaptcha.version>0.0.9</kaptcha.version>
         <fastjson.version>1.2.54</fastjson.version>
         <security.oauth.version>2.3.6.RELEASE</security.oauth.version>
+        <security.jwt.version>1.0.10.RELEASE</security.jwt.version>
     </properties>
     <dependencies>
+        <!--配置文件处理器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!--监控-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
