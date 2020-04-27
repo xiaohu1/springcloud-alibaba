@@ -69,7 +69,7 @@ public class AccessGatewayFilter implements GlobalFilter {
             return unauthorized(exchange);
         }
         // 获取access_token 放掉
-        if (authentication.startsWith(BASIC)) {
+        if (authentication.startsWith(BASIC.toLowerCase())) {
             URI uri = exchange.getRequest().getURI();
             String queryParam = uri.getRawQuery();
             Map<String, String> paramMap = HttpUtil.decodeParamMap(queryParam, CharsetUtil.UTF_8);
@@ -87,7 +87,7 @@ public class AccessGatewayFilter implements GlobalFilter {
 ////            builder.header(HttpHeaders.AUTHORIZATION, OauthUtils.authHeaders());
 //            return chain.filter(exchange.mutate().request(builder.build()).build());
         }
-        if (authentication.startsWith(BEARER)) {
+        if (authentication.startsWith(BEARER.toLowerCase())) {
             //1.验证token是否有效
             //2.验证url是否有请求权限
             int flag = authService.checkTokenInOauth2Client(authentication.substring(7), url);

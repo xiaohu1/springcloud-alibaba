@@ -85,13 +85,6 @@
             <artifactId>commons-codec</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>${alibaba-druid.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
