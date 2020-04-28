@@ -9,7 +9,6 @@ import com.test.sys.api.entity.SysUserEntity;
 import com.test.sys.service.SysMenuService;
 import com.test.sys.service.SysUserRoleService;
 import com.test.sys.service.SysUserService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,7 +52,7 @@ public class SysUserRpc {
         if(!CollectionUtils.isEmpty(roleIdList)){
             userInfo.setRoles(ArrayUtil.toArray(roleIdList, Long.class));
         }
-        return new Result<>(userInfo);
+        return Result.ok(userInfo);
     }
 
 

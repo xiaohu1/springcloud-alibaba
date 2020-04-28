@@ -4,7 +4,6 @@ package com.test.sys.controller;
 import com.test.common.base.util.Result;
 import com.test.sys.service.SysOssService;
 import com.test.sys.api.entity.SysOssEntity;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +29,7 @@ public class SysOssController {
      */
     @GetMapping("/{id}")
     public Result<SysOssEntity> getById(@PathVariable("id") Long id) {
-        return new Result<>(sysOssService.getById(id));
+        return Result.ok(sysOssService.getById(id));
     }
 
 
@@ -42,7 +41,7 @@ public class SysOssController {
      */
     @PostMapping
     public Result save(@RequestBody SysOssEntity sysOssEntity) {
-        return new Result<>(sysOssService.save(sysOssEntity));
+        return Result.ok(sysOssService.save(sysOssEntity));
     }
 
     /**
@@ -53,7 +52,7 @@ public class SysOssController {
      */
     @PutMapping
     public Result update(@RequestBody SysOssEntity sysOssEntity) {
-        return new Result<>(sysOssService.updateById(sysOssEntity));
+        return Result.ok(sysOssService.updateById(sysOssEntity));
     }
 
     /**
@@ -64,7 +63,7 @@ public class SysOssController {
      */
     @DeleteMapping("/{id}")
     public Result removeById(@PathVariable Long id) {
-        return new Result<>(sysOssService.removeById(id));
+        return Result.ok(sysOssService.removeById(id));
     }
 
 

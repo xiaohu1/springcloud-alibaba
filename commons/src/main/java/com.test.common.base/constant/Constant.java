@@ -18,6 +18,15 @@ public class Constant {
     public static final String CODE_KEY = "CODE_KEY_";
 
     /**
+     * 成功标记
+     */
+    public static final Integer SUCCESS = 0;
+    /**
+     * 失败标记
+     */
+    public static final Integer FAIL = 1;
+
+    /**
 	 * 菜单类型
 	 * 
 	 */

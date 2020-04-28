@@ -4,6 +4,7 @@ import com.test.common.base.util.Result;
 import com.test.sys.api.dto.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public interface UserClient {
     @GetMapping(value = "/rpc/user/getByName/{username}")
     Result<UserInfo> findUserByUsername(@PathVariable("username") String username);
 
-    @Service
+    @Component
     @Slf4j
     class UserServiceFallbackImpl implements UserClient {
 

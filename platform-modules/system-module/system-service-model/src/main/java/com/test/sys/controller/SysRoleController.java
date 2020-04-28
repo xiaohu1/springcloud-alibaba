@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.test.common.base.util.Result;
 import com.test.sys.service.SysRoleService;
 import com.test.sys.api.entity.SysRoleEntity;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +32,7 @@ public class SysRoleController {
      */
     @PostMapping("/page")
     public Result<IPage<SysRoleEntity>> getSysRolePage(Map<String, Object> params) {
-        return new Result<>(sysRoleService.getSysRolePage(params));
+        return Result.ok(sysRoleService.getSysRolePage(params));
     }
 
 
@@ -45,7 +44,7 @@ public class SysRoleController {
      */
     @GetMapping("/{roleId}")
     public Result<SysRoleEntity> getById(@PathVariable("roleId") Long roleId) {
-        return new Result<>(sysRoleService.getById(roleId));
+        return Result.ok(sysRoleService.getById(roleId));
     }
 
 
@@ -57,7 +56,7 @@ public class SysRoleController {
      */
     @PostMapping
     public Result save(@RequestBody SysRoleEntity sysRoleEntity) {
-        return new Result<>(sysRoleService.save(sysRoleEntity));
+        return Result.ok(sysRoleService.save(sysRoleEntity));
     }
 
     /**
@@ -68,7 +67,7 @@ public class SysRoleController {
      */
     @PutMapping
     public Result update(@RequestBody SysRoleEntity sysRoleEntity) {
-        return new Result<>(sysRoleService.updateById(sysRoleEntity));
+        return Result.ok(sysRoleService.updateById(sysRoleEntity));
     }
 
     /**
@@ -79,7 +78,7 @@ public class SysRoleController {
      */
     @DeleteMapping("/{roleId}")
     public Result removeById(@PathVariable Long roleId) {
-        return new Result<>(sysRoleService.removeById(roleId));
+        return Result.ok(sysRoleService.removeById(roleId));
     }
 
 

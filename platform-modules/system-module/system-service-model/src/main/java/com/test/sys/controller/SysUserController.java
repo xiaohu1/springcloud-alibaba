@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.test.common.base.util.Result;
 import com.test.sys.service.SysUserService;
 import com.test.sys.api.entity.SysUserEntity;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +30,7 @@ public class SysUserController {
      */
     @PostMapping("/list")
     public Result<IPage<SysUserEntity>> getSysUserPage(@RequestBody Map<String, Object> map) {
-        return new Result<>(sysUserService.getSysUserPage(map));
+        return Result.ok(sysUserService.getSysUserPage(map));
     }
 
 
@@ -44,7 +43,7 @@ public class SysUserController {
     @GetMapping("/info/{userId}")
     public Result<SysUserEntity> getById(@PathVariable("userId") Long userId) {
 
-        return new Result<>(sysUserService.getById(userId));
+        return Result.ok(sysUserService.getById(userId));
     }
 
 
@@ -56,7 +55,7 @@ public class SysUserController {
      */
     @PostMapping
     public Result save(@RequestBody SysUserEntity sysUserEntity) {
-        return new Result<>(sysUserService.save(sysUserEntity));
+        return Result.ok(sysUserService.save(sysUserEntity));
     }
 
     /**
@@ -67,7 +66,7 @@ public class SysUserController {
      */
     @PutMapping
     public Result update(@RequestBody SysUserEntity sysUserEntity) {
-        return new Result<>(sysUserService.updateById(sysUserEntity));
+        return Result.ok(sysUserService.updateById(sysUserEntity));
     }
 
     /**
@@ -78,7 +77,7 @@ public class SysUserController {
      */
     @DeleteMapping("/{userId}")
     public Result removeById(@PathVariable Long userId) {
-        return new Result<>(sysUserService.removeById(userId));
+        return Result.ok(sysUserService.removeById(userId));
     }
 
 }

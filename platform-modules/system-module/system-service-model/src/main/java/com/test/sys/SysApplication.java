@@ -8,9 +8,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 /**
  * @author liujian
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.test")
 @EnableDiscoveryClient
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.test")
 public class SysApplication {
     public static void main(String[] args) {
         SpringApplication.run(SysApplication.class, args);

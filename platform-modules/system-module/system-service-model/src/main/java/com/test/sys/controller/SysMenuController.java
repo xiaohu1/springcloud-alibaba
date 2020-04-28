@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.test.common.base.util.Result;
 import com.test.sys.service.SysMenuService;
 import com.test.sys.api.entity.SysMenuEntity;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,7 +50,7 @@ public class SysMenuController {
                 sysMenuEntity.setParentName(parentMenuEntity.getName());
             }
         }
-        return new Result<>(menuList);
+        return Result.ok(menuList);
     }
 
     /**
@@ -70,7 +69,7 @@ public class SysMenuController {
         root.setParentId((long) -1);
         root.setOpen(true);
         menuList.add(root);
-        return new Result<>(menuList);
+        return Result.ok(menuList);
     }
 
 
@@ -82,7 +81,7 @@ public class SysMenuController {
      */
     @GetMapping("/{menuId}")
     public Result<SysMenuEntity> getById(@PathVariable("menuId") Long menuId) {
-        return new Result<>(sysMenuService.getById(menuId));
+        return Result.ok(sysMenuService.getById(menuId));
     }
 
 
@@ -94,7 +93,7 @@ public class SysMenuController {
      */
     @PostMapping("save")
     public Result save(@RequestBody SysMenuEntity sysMenuEntity) {
-        return new Result<>(sysMenuService.save(sysMenuEntity));
+        return Result.ok(sysMenuService.save(sysMenuEntity));
     }
 
     /**
@@ -105,7 +104,7 @@ public class SysMenuController {
      */
     @PutMapping("update")
     public Result update(@RequestBody SysMenuEntity sysMenuEntity) {
-        return new Result<>(sysMenuService.updateById(sysMenuEntity));
+        return Result.ok(sysMenuService.updateById(sysMenuEntity));
     }
 
     /**
@@ -116,7 +115,7 @@ public class SysMenuController {
      */
     @DeleteMapping("/{menuId}")
     public Result removeById(@PathVariable Long menuId) {
-        return new Result<>(sysMenuService.removeById(menuId));
+        return Result.ok(sysMenuService.removeById(menuId));
     }
 
 

@@ -35,13 +35,6 @@
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
-        <!--验证码-->
-        <dependency>
-            <groupId>com.github.axet</groupId>
-            <artifactId>kaptcha</artifactId>
-            <version>${kaptcha.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>com.test.springcloud-alibaba</groupId>
             <artifactId>auth-client</artifactId>

@@ -4,7 +4,6 @@ package com.test.sys.controller;
 import com.test.common.base.util.Result;
 import com.test.sys.service.SysDeptService;
 import com.test.sys.api.entity.SysDeptEntity;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +29,7 @@ public class SysDeptController {
      */
     @PostMapping("/list")
     public Result<List<SysDeptEntity>> list(SysDeptEntity sysDeptEntity) {
-        return new Result<>(sysDeptService.getDeptList(sysDeptEntity));
+        return Result.ok(sysDeptService.getDeptList(sysDeptEntity));
     }
 
 
@@ -42,7 +41,7 @@ public class SysDeptController {
      */
     @GetMapping("/{deptId}")
     public Result<SysDeptEntity> getById(@PathVariable("deptId") Long deptId) {
-        return new Result<>(sysDeptService.getById(deptId));
+        return Result.ok(sysDeptService.getById(deptId));
     }
 
 
@@ -54,7 +53,7 @@ public class SysDeptController {
      */
     @PostMapping
     public Result save(@RequestBody SysDeptEntity sysDeptEntity) {
-        return new Result<>(sysDeptService.save(sysDeptEntity));
+        return Result.ok(sysDeptService.save(sysDeptEntity));
     }
 
     /**
@@ -65,7 +64,7 @@ public class SysDeptController {
      */
     @PutMapping
     public Result update(@RequestBody SysDeptEntity sysDeptEntity) {
-        return new Result<>(sysDeptService.updateById(sysDeptEntity));
+        return Result.ok(sysDeptService.updateById(sysDeptEntity));
     }
 
     /**
@@ -76,7 +75,7 @@ public class SysDeptController {
      */
     @DeleteMapping("/{deptId}")
     public Result removeById(@PathVariable Long deptId) {
-        return new Result<>(sysDeptService.removeById(deptId));
+        return Result.ok(sysDeptService.removeById(deptId));
     }
 
 

@@ -7,7 +7,6 @@ import com.test.common.base.util.Result;
 import com.test.sys.api.client.UserClient;
 import com.test.sys.api.dto.UserInfo;
 import com.test.sys.api.entity.SysUserEntity;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

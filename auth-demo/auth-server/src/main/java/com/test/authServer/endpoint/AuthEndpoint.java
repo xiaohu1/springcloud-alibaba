@@ -1,17 +1,13 @@
 package com.test.authServer.endpoint;
 
-import cn.hutool.core.util.StrUtil;
 import com.test.authServer.service.AuthenticationService;
 import com.test.common.base.util.RedisUtils;
 import com.test.common.base.util.Result;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
