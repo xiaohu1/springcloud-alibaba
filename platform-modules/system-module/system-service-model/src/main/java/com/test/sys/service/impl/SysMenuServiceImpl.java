@@ -9,6 +9,7 @@ import com.test.sys.mapper.SysUserRoleMapper;
 import com.test.sys.service.SysMenuService;
 import com.test.sys.api.entity.SysMenuEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -20,10 +21,9 @@ import java.util.*;
  * @date 2019-06-26 21:03:21
  */
 @Service("sysMenuService")
-@AllArgsConstructor
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity> implements SysMenuService {
-
-    private final SysUserRoleMapper sysUserRoleMapper;
+    @Autowired
+    private SysUserRoleMapper sysUserRoleMapper;
 
     @Override
     public List<SysMenuEntity> queryListParentId(Long parentId, List<Long> menuIdList) {

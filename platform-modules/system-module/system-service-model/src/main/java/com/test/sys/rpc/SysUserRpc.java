@@ -1,15 +1,16 @@
-package com.test.sys.client;
+package com.test.sys.rpc;
 
 import cn.hutool.core.util.ArrayUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.test.common.base.exception.RRException;
 import com.test.common.base.util.Result;
+import com.test.sys.api.dto.UserInfo;
+import com.test.sys.api.entity.SysUserEntity;
 import com.test.sys.service.SysMenuService;
 import com.test.sys.service.SysUserRoleService;
 import com.test.sys.service.SysUserService;
-import com.test.sys.api.dto.UserInfo;
-import com.test.sys.api.entity.SysUserEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,13 +24,15 @@ import java.util.Set;
  * @author liujian
  */
 @RestController
-@AllArgsConstructor
-@RequestMapping("/api/user")
-public class UserClient {
+@RequestMapping("/rpc/user")
+public class SysUserRpc {
 
-    private final SysUserService sysUserService;
-    private final SysMenuService sysMenuService;
-    private final SysUserRoleService sysUserRoleService;
+    @Autowired
+    private SysUserService sysUserService;
+    @Autowired
+    private SysMenuService sysMenuService;
+    @Autowired
+    private SysUserRoleService sysUserRoleService;
 
     @GetMapping("/getByName/{username}")
     public Result<UserInfo> findUserByUsername(@PathVariable("username") String username) {
@@ -52,6 +55,8 @@ public class UserClient {
         }
         return new Result<>(userInfo);
     }
+
+
 
 
 }

@@ -14,6 +14,7 @@ import com.test.sys.api.entity.SysRoleEntity;
 import com.test.sys.api.entity.SysUserEntity;
 import com.test.sys.service.*;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,13 +28,16 @@ import java.util.Map;
  * @date 2019-06-26 21:03:22
  */
 @Service("sysUserService")
-@AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity> implements SysUserService {
 
-    private final SysUserDeptService sysUserDeptService;
-    private final SysUserRoleService sysUserRoleService;
-    private final SysDeptService sysDeptService;
-    private final SysRoleService sysRoleService;
+    @Autowired
+    private SysUserDeptService sysUserDeptService;
+    @Autowired
+    private SysUserRoleService sysUserRoleService;
+    @Autowired
+    private SysDeptService sysDeptService;
+    @Autowired
+    private SysRoleService sysRoleService;
 
     /**
      * 系统用户简单分页查询

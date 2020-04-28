@@ -1,32 +1,39 @@
 package com.test.authclient.fegin;
 
+import com.test.common.base.util.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author liujian
  */
 @FeignClient(name = "auth-server",fallback = AuthClient.AuthClientFallbackImpl.class)
-public interface AuthClient {
+public interface AuthClient{
 
-    /**
-     *  客户端申请access_token校验,验证url 权限
-     */
-    @GetMapping("/api/auth/checkToken")
-    int checkTokenInOauth2Client(@RequestParam("token") String tokenValue, @RequestParam("perms") String perms);
+        /**
+         * 调用签权服务，判断用户是否有权限
+         *
+         * @param authentication
+         * @param url
+         * @param method
+         * @return
+         */
+        @PostMapping(value = "/auth/permission")
+        boolean auth(@RequestHeader(HttpHeaders.AUTHORIZATION) String authentication, @RequestParam("url") String url, @RequestParam("method") String method);
 
-    @Component
-    @Slf4j
-    class AuthClientFallbackImpl implements AuthClient {
-
-        @Override
-        public int checkTokenInOauth2Client(String tokenValue, String perms) {
-            log.info("客户端申请access_token校验 /api/auth/checkToken 服务降级处理");
-            return 0;
+        @Component
+        class AuthClientFallbackImpl implements AuthClient {
+            @Override
+            public boolean auth(String authentication, String url, String method) {
+                return false;
+            }
         }
     }
 
-}

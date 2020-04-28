@@ -6,6 +6,7 @@ import com.test.common.base.util.Result;
 import com.test.sys.service.SysRoleService;
 import com.test.sys.api.entity.SysRoleEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -18,11 +19,11 @@ import java.util.Map;
  * @date 2019-06-26 21:03:22
  */
 @RestController
-@AllArgsConstructor
 @RequestMapping("/role")
 public class SysRoleController {
 
-    private final SysRoleService sysRoleService;
+    @Autowired
+    private SysRoleService sysRoleService;
 
     /**
      * 简单分页查询

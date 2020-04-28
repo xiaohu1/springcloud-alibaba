@@ -2,10 +2,10 @@ package com.test.sys.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.test.common.base.util.Result;
-import com.test.sys.feign.UserOrder;
 import com.test.sys.service.SysUserService;
 import com.test.sys.api.entity.SysUserEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -18,13 +18,10 @@ import java.util.Map;
  * @date 2019-06-26 21:03:22
  */
 @RestController
-@AllArgsConstructor
 @RequestMapping("/user")
 public class SysUserController {
-
-    private final SysUserService sysUserService;
-
-    private final UserOrder userOrder;
+    @Autowired
+    private SysUserService sysUserService;
 
     /**
      * 简单分页查询

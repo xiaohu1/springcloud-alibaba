@@ -8,6 +8,7 @@ import com.test.common.base.exception.RRException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,14 +31,15 @@ import java.util.Map;
 
 @ComponentScan(basePackages = "com.test.authclient")
 @Slf4j
-@AllArgsConstructor
 @Configuration
 public class AccessGatewayFilter implements GlobalFilter {
 
     private static final String BEARER = "Bearer";
     private static final String BASIC = "Basic";
-    private final AuthService authService;
-    private final IgnoreUrlConfig ignoreUrlConfig;
+    @Autowired
+    private AuthService authService;
+    @Autowired
+    private IgnoreUrlConfig ignoreUrlConfig;
 
 
     public boolean passUrl(String url) {
@@ -90,10 +92,10 @@ public class AccessGatewayFilter implements GlobalFilter {
         if (authentication.startsWith(BEARER.toLowerCase())) {
             //1.验证token是否有效
             //2.验证url是否有请求权限
-            int flag = authService.checkTokenInOauth2Client(authentication.substring(7), url);
-            if (flag == 1) {
-                throw new RRException("token 已失效，请从新登录", HttpStatus.UNAUTHORIZED.value());
-            }
+//            int flag = authService.checkTokenInOauth2Client(authentication.substring(7), url);
+//            if (flag == 1) {
+//                throw new RRException("token 已失效，请从新登录", HttpStatus.UNAUTHORIZED.value());
+//            }
         }
         return chain.filter(exchange);
     }

@@ -6,6 +6,7 @@ import com.test.common.base.util.Result;
 import com.test.sys.service.SysMenuService;
 import com.test.sys.api.entity.SysMenuEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,11 +19,11 @@ import java.util.List;
  * @date 2019-06-26 21:03:21
  */
 @RestController
-@AllArgsConstructor
 @RequestMapping("/menu")
 public class SysMenuController {
 
-    private final SysMenuService sysMenuService;
+    @Autowired
+    private SysMenuService sysMenuService;
 
     /**
      * 导航菜单

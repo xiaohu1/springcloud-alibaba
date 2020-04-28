@@ -5,6 +5,7 @@ import com.test.common.base.util.Result;
 import com.test.sys.service.SysOssService;
 import com.test.sys.api.entity.SysOssEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,11 +16,11 @@ import org.springframework.web.bind.annotation.*;
  * @date 2019-06-26 21:03:22
  */
 @RestController
-@AllArgsConstructor
 @RequestMapping("/oss")
 public class SysOssController {
 
-    private final SysOssService sysOssService;
+    @Autowired
+    private SysOssService sysOssService;
 
     /**
      * 通过id查询单条记录

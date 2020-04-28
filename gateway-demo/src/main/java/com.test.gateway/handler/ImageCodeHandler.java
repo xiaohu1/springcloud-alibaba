@@ -4,6 +4,7 @@ import com.google.code.kaptcha.Producer;
 import com.test.common.base.constant.Constant;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
@@ -27,10 +28,11 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j
 @Component
-@AllArgsConstructor
 public class ImageCodeHandler implements HandlerFunction<ServerResponse> {
-    private final Producer producer;
-    private final RedisTemplate redisTemplate;
+    @Autowired
+    private Producer producer;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Override
     public Mono<ServerResponse> handle(ServerRequest serverRequest) {

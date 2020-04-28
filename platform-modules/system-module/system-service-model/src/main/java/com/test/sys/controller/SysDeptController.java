@@ -5,6 +5,7 @@ import com.test.common.base.util.Result;
 import com.test.sys.service.SysDeptService;
 import com.test.sys.api.entity.SysDeptEntity;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,11 +18,11 @@ import java.util.List;
  * @date 2019-06-26 21:03:22
  */
 @RestController
-@AllArgsConstructor
 @RequestMapping("/dept")
 public class SysDeptController {
 
-    private final SysDeptService sysDeptService;
+    @Autowired
+    private SysDeptService sysDeptService;
 
 
     /**

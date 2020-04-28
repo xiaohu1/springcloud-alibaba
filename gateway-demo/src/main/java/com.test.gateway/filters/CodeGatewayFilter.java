@@ -7,9 +7,11 @@ import com.test.common.base.exception.RRException;
 import com.test.common.base.util.R;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.test.common.base.util.RedisUtils;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -25,10 +27,13 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @Component
-@AllArgsConstructor
 public class CodeGatewayFilter extends AbstractGatewayFilterFactory {
-    private final ObjectMapper objectMapper;
-    private final RedisTemplate redisTemplate;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+    @Autowired
+//    private RedisUtils redisUtils;
+    private RedisTemplate redisTemplate;
 
     @Override
     public GatewayFilter apply(Object config) {
@@ -78,34 +83,16 @@ public class CodeGatewayFilter extends AbstractGatewayFilterFactory {
         if (StrUtil.isBlank(code)) {
             throw new RRException("验证码不能为空");
         }
-
         String randomStr = request.getQueryParams().getFirst("randomStr");
         if (StrUtil.isBlank(randomStr)) {
             randomStr = request.getQueryParams().getFirst("mobile");
         }
-
-        String key = Constant.CODE_KEY+ randomStr;
-        if (!redisTemplate.hasKey(key)) {
-            throw new RRException("验证码不合法");
-        }
-
-        Object codeObj = redisTemplate.opsForValue().get(key);
-
-        if (codeObj == null) {
-            throw new RRException("验证码不合法");
-        }
-
-        String saveCode = codeObj.toString();
-        if (StrUtil.isBlank(saveCode)) {
+        String key = Constant.CODE_KEY + randomStr;
+        Object saveCode = redisTemplate.opsForValue().get(key);
+        if (saveCode == null || StrUtil.isBlank(saveCode.toString()) || !StrUtil.equals(saveCode.toString(), code)) {
             redisTemplate.delete(key);
             throw new RRException("验证码不合法");
         }
-
-        if (!StrUtil.equals(saveCode, code)) {
-            redisTemplate.delete(key);
-            throw new RRException("验证码不合法");
-        }
-
         redisTemplate.delete(key);
     }
 }

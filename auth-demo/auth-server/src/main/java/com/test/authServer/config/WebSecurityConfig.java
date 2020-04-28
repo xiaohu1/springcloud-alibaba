@@ -27,10 +27,11 @@ import org.springframework.web.filter.CorsFilter;
 @Order(90)
 @Configuration
 @EnableWebSecurity
-@AllArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final UserDetailsService userDetailsService;
-    private final IgnoreUrlConfig ignoreUrlConfig;
+    @Autowired
+    private UserDetailsService userDetailsService;
+    @Autowired
+    private IgnoreUrlConfig ignoreUrlConfig;
 
     @Override
     public void configure(HttpSecurity http) throws Exception {

@@ -1,13 +1,15 @@
 
-package com.test.authServer.service;
+package com.test.authServer.service.impl;
 
 import cn.hutool.core.util.ArrayUtil;
-import com.test.authServer.feign.UserService;
+import com.test.authServer.service.UserDetail;
 import com.test.common.base.util.Result;
+import com.test.sys.api.client.UserClient;
 import com.test.sys.api.dto.UserInfo;
 import com.test.sys.api.entity.SysUserEntity;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,9 +29,10 @@ import java.util.Set;
  */
 @Slf4j
 @Service
-@AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
-	private final UserService remoteUserService;
+
+	@Autowired
+	private UserClient userClient;
 
 	/**
 	 * 用户密码登录
@@ -41,9 +44,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		Result<UserInfo> result = remoteUserService.findUserByUsername(username);
-		UserDetails userDetails = getUserDetails(result);
-		return userDetails;
+		Result<UserInfo> result = userClient.findUserByUsername(username);
+		return getUserDetails(result);
 	}
 
 	/**

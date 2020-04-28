@@ -32,7 +32,6 @@ public class UserDetail extends User {
 
 	/**
 	 * Construct the <code>UserDetail</code> with the details required by
-	 * {@link DaoAuthenticationProvider}.
 	 *
 	 * @param userId                    用户ID
 	 * @param deptId                部门ID
