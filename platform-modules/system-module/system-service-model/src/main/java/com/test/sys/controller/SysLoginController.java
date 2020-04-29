@@ -38,7 +38,7 @@ public class SysLoginController {
     private Producer producer;
     @Autowired
 //    private RedisUtils redisUtils;
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
     @Autowired
     private AuthClient authClient;
     @Autowired
@@ -52,7 +52,9 @@ public class SysLoginController {
         //生成验证码
         String text = producer.createText();
         //保存验证码信息
+        redisTemplate.delete(Constant.CODE_KEY + randomStr);
         redisTemplate.opsForValue().set(Constant.CODE_KEY + randomStr, text, 60); // 1分钟有效
+        System.out.println("code: "+ text);
 
         try {
             OutputStream out = response.getOutputStream();
@@ -107,14 +109,18 @@ public class SysLoginController {
 
         // 验证验证码是否正确
         String key = Constant.CODE_KEY + randomStr;
-        Object validCode = redisTemplate.opsForValue().get(key);
-        if (validCode == null || !captcha.equalsIgnoreCase(validCode.toString())) {
-            return false;
+        if(redisTemplate.hasKey(key)) {
+            Object validCode = redisTemplate.opsForValue().get(key);
+            if (validCode == null || !captcha.trim().equalsIgnoreCase(String.valueOf(validCode).trim())) {
+                return false;
+            }
+            // 删除验证码
+            redisTemplate.delete(key);
+            return true;
         }
-        // 删除验证码
-        redisTemplate.delete(key);
-        return true;
+        return false;
     }
+
 
     /**
      * 生成请求头 header
@@ -123,6 +129,12 @@ public class SysLoginController {
     private String authHeaders(){
         String base64Source =  loginConfig.getClientId()+ ":" + loginConfig.getClientSecret();
         return AUTH_PREFIX + Base64.encodeBase64String(base64Source.getBytes());
+    }
+
+    public static void main(String[] args) {
+        String base64Source =  "client_id" + ":" + "secret";
+       String header  =  AUTH_PREFIX + Base64.encodeBase64String(base64Source.getBytes());
+        System.out.println("header :   " +header);
     }
 
 

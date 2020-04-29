@@ -47,17 +47,20 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Value("${spring.security.oauth2.jwt.signingKey}")
     private String signingKey;
+    static final String SCOPE = "server";
+    static final int ACCESS_TOKEN_VALIDITY_SECONDS = 7 * 24 * 60 * 60;
+    static final int FREFRESH_TOKEN_VALIDITY_SECONDS = 7 * 24 * 60 * 60;
 
-    @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource oauthDataSource() {
-        return new DruidDataSource();
-    }
-
-    @Bean
-    public JdbcClientDetailsService clientDetailsService() {
-        return new JdbcClientDetailsService(oauthDataSource());
-    }
+//    @Bean
+//    @ConfigurationProperties(prefix = "spring.datasource")
+//    public DataSource oauthDataSource() {
+//        return new DruidDataSource();
+//    }
+//
+//    @Bean
+//    public JdbcClientDetailsService clientDetailsService() {
+//        return new JdbcClientDetailsService(oauthDataSource());
+//    }
 
     @Bean
     public TokenStore tokenStore() {
@@ -79,25 +82,31 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         return new JwtTokenEnhancer();
     }
 
-    @Bean
-    public ApprovalStore approvalStore() {
-        return new JdbcApprovalStore(oauthDataSource());
-    }
+//    @Bean
+//    public ApprovalStore approvalStore() {
+//        return new JdbcApprovalStore(oauthDataSource());
+//    }
 
-    @Bean
-    public AuthorizationCodeServices authorizationCodeServices() {
-        return new JdbcAuthorizationCodeServices(oauthDataSource());
-    }
+//    @Bean
+//    public AuthorizationCodeServices authorizationCodeServices() {
+//        return new JdbcAuthorizationCodeServices(oauthDataSource());
+//    }
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsService());
+        clients.inMemory()
+                .withClient("client_id").secret("secret")
+                .authorizedGrantTypes("password", "authorization_code", "refresh_token")
+                .scopes(SCOPE)
+                .accessTokenValiditySeconds(ACCESS_TOKEN_VALIDITY_SECONDS)
+                .refreshTokenValiditySeconds(FREFRESH_TOKEN_VALIDITY_SECONDS);
+//        clients.withClientDetails(clientDetailsService());
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-        oauthServer.allowFormAuthenticationForClients();
-        oauthServer.checkTokenAccess("permitAll()");
+        oauthServer.tokenKeyAccess("isAuthenticated()")
+                .checkTokenAccess("permitAll()");
     }
 
     @Override
@@ -106,8 +115,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), accessTokenConverter()));
         endpoints
-                .approvalStore(approvalStore())
-                .authorizationCodeServices(authorizationCodeServices())
+//                .approvalStore(approvalStore())
+//                .authorizationCodeServices(authorizationCodeServices())
                 .tokenStore(tokenStore())
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService)

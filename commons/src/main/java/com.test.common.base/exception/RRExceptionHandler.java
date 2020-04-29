@@ -29,8 +29,8 @@ public class RRExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public Result exception(Exception e) {
-		log.error("全局异常信息 ex={}", e.getMessage(), e);
-		return Result.failed(e);
+		log.error("全局异常信息 ex={}", e.getMessage());
+		return Result.failed(e,"服务模块异常");
 	}
 
 	/**

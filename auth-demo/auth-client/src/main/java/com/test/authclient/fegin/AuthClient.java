@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,13 +26,13 @@ public interface AuthClient{
      * @return
      */
     @PostMapping(value = "/auth/permission")
-    boolean auth(@RequestHeader(HttpHeaders.AUTHORIZATION) String authentication, @RequestParam("url") String url, @RequestParam("method") String method);
+    boolean auth(@RequestHeader(HttpHeaders.AUTHORIZATION) String authentication, @RequestParam(name = "url") String url, @RequestParam(name = "method") String method);
 
     /**
      *  oauth2 获取 access_token 信息
      */
-    @PostMapping("/oauth/token")
-    Map<String, Object> oauth2(@RequestHeader(name = "Authorization") String Authorization,
+    @GetMapping(value = "/oauth/token")
+    Map<String, Object> oauth2(@RequestHeader(HttpHeaders.AUTHORIZATION) String Authorization,
                                @RequestParam(name = "grant_type") String grant_type,
                                @RequestParam(name = "username") String username,
                                @RequestParam(name = "password") String password);

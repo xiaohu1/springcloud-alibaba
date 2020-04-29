@@ -4,8 +4,7 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
@@ -21,9 +20,8 @@ import java.util.concurrent.TimeUnit;
  * @author liujian
  */
 @Component
+@Slf4j
 public class RedisUtils {
-
-	private static final Logger logger = LoggerFactory.getLogger(RedisUtils.class);
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -102,11 +100,11 @@ public class RedisUtils {
         try {
 			mapper.writeValue(writer, object);
 		} catch (JsonGenerationException e) {
-			logger.error("json生成出错",e);
+			log.error("json生成出错",e);
 		} catch (JsonMappingException e) {
-			logger.error("json映射错误",e);
+            log.error("json映射错误",e);
 		} catch (IOException e) {
-			logger.error("json转换是发生IO异常",e);
+            log.error("json转换是发生IO异常",e);
 		}
         return writer.toString();
     }
@@ -119,11 +117,11 @@ public class RedisUtils {
     	try {
 			t = mapper.readValue(json, clazz);
 		} catch (JsonParseException e) {
-			logger.error("json解释错误",e);
+            log.error("json解释错误",e);
 		} catch (JsonMappingException e) {
-			logger.error("json映射错误",e);
+            log.error("json映射错误",e);
 		} catch (IOException e) {
-			logger.error("json转换是发生IO异常",e);
+            log.error("json转换是发生IO异常",e);
 		}
     	return t;
     }

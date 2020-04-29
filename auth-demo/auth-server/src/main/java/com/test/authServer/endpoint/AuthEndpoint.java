@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
  * @Description: 退出登录
  */
 @RestController
-@RequestMapping("/tokenEndpoint")
 public class AuthEndpoint {
 	private static final String BEARER = "bearer";
 	@Autowired

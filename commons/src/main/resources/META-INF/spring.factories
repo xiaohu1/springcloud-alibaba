@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.test.common.base.configuration.IgnoreUrlConfig
+  com.test.common.base.configuration.IgnoreUrlConfig,\
+  com.test.common.base.configuration.RedisConfig

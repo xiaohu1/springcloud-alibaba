@@ -67,7 +67,7 @@ public class AuthServiceImpl implements AuthService {
         Jwt jwt = this.getJwt(authentication);
         String claims = jwt.getClaims();
         JSONObject jsonObject = JSONObject.parseObject(claims);
-        String username = jsonObject.getString("username");
+        String username = jsonObject.getString("user_name");
         Object object = redisTemplate.opsForValue().get(username);
         if (object == null) {
             log.error("用户名：{}，token失效过期。", username);

@@ -4,6 +4,8 @@ spring:
   # 服务名称
   application:
     name: gateway-server
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
   cloud:
     nacos:
       # 服务注册与发现
