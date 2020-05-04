@@ -6,8 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * 文件上传
@@ -33,7 +32,7 @@ public class SysOssEntity extends Model<SysOssEntity> {
     /**
      * 创建时间
      */
-    private LocalDateTime createDate;
+    private Date createDate;
     /**
      * 创建人
      */

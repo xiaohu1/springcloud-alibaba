@@ -54,19 +54,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         );
         if (!CollectionUtils.isEmpty(page.getRecords())) {
             for (SysUserEntity userEntity : page.getRecords()) {
-                List<SysDeptEntity> deptList = new ArrayList<>();
                 List<SysRoleEntity> roleList = new ArrayList<>();
-                //1.获取部门名称
-                List<Long> deptIds = sysUserDeptService.queryDeptIdList(userEntity.getUserId());
-                if (!CollectionUtils.isEmpty(deptIds)) {
-                    for (int i = 0; i < deptIds.size(); i++) {
-                        SysDeptEntity deptEntity = sysDeptService.getById(deptIds.get(i));
-                        if (deptEntity != null) {
-                            deptList.add(deptEntity);
-                        }
-                    }
-                    userEntity.setDeptList(deptList);
-                }
                 //2.获取角色名称
                 List<Long> roleIdList = sysUserRoleService.queryRoleIdList(userEntity.getUserId());
                 if (!CollectionUtils.isEmpty(roleIdList)) {

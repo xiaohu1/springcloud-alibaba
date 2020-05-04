@@ -64,22 +64,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 
-
-
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new PasswordEncoder() {
-
-			@Override
-			public boolean matches(CharSequence rawPassword, String encodedPassword) {
-				return true;
-			}
-
-			@Override
-			public String encode(CharSequence rawPassword) {
-				return rawPassword.toString();
-			}
-		};
+		return new BCryptPasswordEncoder();
 	}
 
 

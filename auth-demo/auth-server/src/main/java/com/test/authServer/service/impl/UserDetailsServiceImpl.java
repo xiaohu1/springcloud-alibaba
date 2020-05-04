@@ -64,7 +64,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			// 获取角色
 			Arrays.stream(info.getRoles()).forEach(role -> dbAuthsSet.add(role.toString()));
 			// 获取资源
-			dbAuthsSet.addAll(Arrays.asList(info.getPermissions()));
+//			dbAuthsSet.addAll(Arrays.asList(info.getPermissions()));
 
 		}
 		Collection<? extends GrantedAuthority> authorities

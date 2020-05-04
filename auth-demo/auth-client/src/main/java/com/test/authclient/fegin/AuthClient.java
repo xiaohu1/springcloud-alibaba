@@ -31,7 +31,7 @@ public interface AuthClient{
     /**
      *  oauth2 获取 access_token 信息
      */
-    @GetMapping(value = "/oauth/token")
+    @PostMapping(value = "/oauth/token")
     Map<String, Object> oauth2(@RequestHeader(HttpHeaders.AUTHORIZATION) String Authorization,
                                @RequestParam(name = "grant_type") String grant_type,
                                @RequestParam(name = "username") String username,

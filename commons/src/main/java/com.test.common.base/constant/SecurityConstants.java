@@ -28,6 +28,11 @@ public interface SecurityConstants {
 	 */
 	String OAUTH_CHECK_TOKEN ="http://localhost:6001/oauth/check_token";
 
+	/**
+	 * 标志
+	 */
+	String FROM = "from";
+
 
 //	/**
 //	 * 微信获取OPENID
