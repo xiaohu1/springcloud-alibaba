@@ -1,5 +1,5 @@
 server:
-  port: 8002
+  port: 8018
 spring:
   # 服务名称
   application:
@@ -10,7 +10,7 @@ spring:
     nacos:
       # 服务注册与发现
       discovery:
-        server-addr: 47.105.155.211:80
+        server-addr: 127.0.0.1:8848
       # 配置中心
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
