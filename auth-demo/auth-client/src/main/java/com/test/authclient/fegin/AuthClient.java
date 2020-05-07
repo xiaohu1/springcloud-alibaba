@@ -26,7 +26,9 @@ public interface AuthClient{
      * @return
      */
     @PostMapping(value = "/auth/permission")
-    boolean auth(@RequestHeader(HttpHeaders.AUTHORIZATION) String authentication, @RequestParam(name = "url") String url, @RequestParam(name = "method") String method);
+    boolean auth(@RequestHeader(HttpHeaders.AUTHORIZATION) String authentication,
+                  @RequestParam(name = "url") String url,
+                  @RequestParam(name = "method") String method);
 
     /**
      *  oauth2 获取 access_token 信息

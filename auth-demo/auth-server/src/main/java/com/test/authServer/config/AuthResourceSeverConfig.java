@@ -24,7 +24,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 @EnableResourceServer
 @RefreshScope
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class AuthResourceSeverConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired

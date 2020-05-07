@@ -52,6 +52,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         // 超级管理员不做权限验证
         String username = String.valueOf(authentication.getPrincipal());
         if(username.trim().toLowerCase().equals("admin")){
+            System.out.println("管理员登录免验证：true");
             return true;
         }
         Collection<? extends GrantedAuthority> authorityRoles = authentication.getAuthorities(); // 用户角色列表

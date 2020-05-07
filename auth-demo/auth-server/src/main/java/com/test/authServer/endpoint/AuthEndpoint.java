@@ -37,7 +37,7 @@ public class AuthEndpoint {
 	 * @return
 	 */
 	@PostMapping("/auth/permission")
-	public boolean decide(@RequestParam String url, @RequestParam String method,
+	public boolean decide(@RequestParam("url") String url, @RequestParam("method") String method,
 								  HttpServletRequest request) {
 		return authenticationService.decide(new HttpServletRequestAuthWrapper(request, url, method));
 	}

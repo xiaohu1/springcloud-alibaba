@@ -1,5 +1,5 @@
 
-package com.test.common.base.configuration;
+package com.test.common;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
