@@ -4,6 +4,7 @@ import com.test.gateway.filters.AuthGatewayFilter;
 import com.test.gateway.filters.CorsFilter;
 import com.test.gateway.filters.SwaggerHeaderFilter;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
@@ -30,6 +31,7 @@ public class GatewayApplication {
         SpringApplication.run(GatewayApplication.class, args);
     }
 
+
     @Component
     @Primary
     class DocumentationConfig implements SwaggerResourcesProvider {
@@ -39,7 +41,7 @@ public class GatewayApplication {
             List resources = new ArrayList<>();
             // 服务名称/v2/api-docs
             resources.add(swaggerResource("用户服务api", "/system-module/v2/api-docs", "2.0"));
-            resources.add(swaggerResource("权限服务api", "/auth-server/v2/api-docs","2.0"));
+            resources.add(swaggerResource("权限服务api", "/auth-server/v2/api-docs", "2.0"));
             return resources;
         }
 
@@ -53,19 +55,19 @@ public class GatewayApplication {
     }
 
     @Bean
-    public CorsFilter corsFilter(){
+    public CorsFilter corsFilter() {
         return new CorsFilter();
     }
 
     @Bean
-    public AuthGatewayFilter authGatewayFilter(){
+    public AuthGatewayFilter authGatewayFilter() {
         return new AuthGatewayFilter();
     }
 
-    @Bean
-    public SwaggerHeaderFilter swaggerHeaderFilter(){
-        return new SwaggerHeaderFilter();
-    }
+//    @Bean
+//    public SwaggerHeaderFilter swaggerHeaderFilter() {
+//        return new SwaggerHeaderFilter();
+//    }
 
 
 

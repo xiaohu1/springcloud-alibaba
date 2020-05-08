@@ -13,7 +13,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.ApiKeyVehicle;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
  * @author liujian
  **/
 @Configuration
-@EnableSwagger2
+@EnableSwagger2WebFlux
 @ConditionalOnProperty(name = "swagger2.enable", havingValue = "true", matchIfMissing = false)
 @EnableConfigurationProperties({Swagger2Properties.class})
 public class Swagger2AutoConfiguration {
@@ -36,6 +36,7 @@ public class Swagger2AutoConfiguration {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                .enable(true)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(swagger2Properties.getBasePackage()))
                 .paths(PathSelectors.any()).build()

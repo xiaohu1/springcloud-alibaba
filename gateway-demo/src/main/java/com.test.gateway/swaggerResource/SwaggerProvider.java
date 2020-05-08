@@ -35,8 +35,6 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
 
         List<SwaggerResource> resources = new ArrayList<>();
 
-        List<String> routes = new ArrayList<>();
-
         //从DiscoveryClientRouteDefinitionLocator 中取出routes，构造成swaggerResource
 
         routeLocator.getRouteDefinitions().subscribe(routeDefinition -> {

@@ -53,9 +53,9 @@ public class AuthGatewayFilter extends AbstractGatewayFilterFactory {
             }
 
             // 调用签权服务看用户是否有权限，若有权限进入下一个filter
-            boolean f = authClient.auth(authentication,url,method);
-            boolean flag = authService.hasPermission(authentication, url, method);
-            if (flag) {
+            Result<Boolean> flag = authClient.auth(authentication,url,method);
+//            boolean flag = authService.hasPermission(authentication, url, method);
+            if (flag.getData()) {
                 ServerHttpRequest.Builder builder = request.mutate();
                 // 将jwt token中的用户信息传给服务
                 String encodeStr = null;

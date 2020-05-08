@@ -20,9 +20,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/swagger-resources")
 public class SwaggerHandler {
-    private SwaggerProvider swaggerProvider;
 
     @Autowired
+    private SwaggerProvider swaggerProvider;
+
+
     public SwaggerHandler(SwaggerProvider swaggerProvider) {
         this.swaggerProvider = swaggerProvider;
     }

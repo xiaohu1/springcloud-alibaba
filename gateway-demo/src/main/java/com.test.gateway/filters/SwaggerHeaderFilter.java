@@ -16,8 +16,6 @@ public class SwaggerHeaderFilter extends AbstractGatewayFilterFactory {
 
     private static final String HEADER_NAME = "X-Forwarded-Prefix";
 
-    private static final String HOST_NAME = "X-Forwarded-Host";
-
     @Override
 
     public GatewayFilter apply(Object config) {
